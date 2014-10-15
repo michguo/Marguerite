@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MARRoutesViewController.h
 //  Marguerite
 //
 //  Created by Michelle Guo on 10/14/14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MARRoutesViewController : UIViewController
 
 @end
-
