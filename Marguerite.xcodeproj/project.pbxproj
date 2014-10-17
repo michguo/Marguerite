@@ -13,7 +13,8 @@
 		321C6CB819ED9E3300B945BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 321C6CB719ED9E3300B945BE /* Images.xcassets */; };
 		321C6CBB19ED9E3300B945BE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 321C6CB919ED9E3300B945BE /* LaunchScreen.xib */; };
 		321C6CC719ED9E3300B945BE /* MargueriteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 321C6CC619ED9E3300B945BE /* MargueriteTests.m */; };
-		321C6CD319EDA16000B945BE /* MargueriteNetworkingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 321C6CD219EDA16000B945BE /* MargueriteNetworkingService.m */; };
+		32BAD6D219EF8D26008EBC74 /* MARNetworkingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BAD6D119EF8D26008EBC74 /* MARNetworkingService.m */; };
+		32BAD6D519EF96C9008EBC74 /* MARStopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BAD6D419EF96C9008EBC74 /* MARStopsViewController.m */; };
 		32C2FE3B19EDAE1D00AE5081 /* MARMargueriteRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C2FE3A19EDAE1D00AE5081 /* MARMargueriteRoute.m */; };
 		32C2FE3E19EDAE6700AE5081 /* MARRoutesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C2FE3D19EDAE6700AE5081 /* MARRoutesViewController.m */; };
 		D33F328567CC819AC9203CA4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C60A30B9CB0317222E5C39D /* libPods.a */; };
@@ -44,8 +45,10 @@
 		321C6CC019ED9E3300B945BE /* MargueriteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MargueriteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		321C6CC519ED9E3300B945BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		321C6CC619ED9E3300B945BE /* MargueriteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MargueriteTests.m; sourceTree = "<group>"; };
-		321C6CD119EDA16000B945BE /* MargueriteNetworkingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MargueriteNetworkingService.h; sourceTree = "<group>"; };
-		321C6CD219EDA16000B945BE /* MargueriteNetworkingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MargueriteNetworkingService.m; sourceTree = "<group>"; };
+		32BAD6D019EF8D26008EBC74 /* MARNetworkingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MARNetworkingService.h; sourceTree = "<group>"; };
+		32BAD6D119EF8D26008EBC74 /* MARNetworkingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MARNetworkingService.m; sourceTree = "<group>"; };
+		32BAD6D319EF96C9008EBC74 /* MARStopsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MARStopsViewController.h; sourceTree = "<group>"; };
+		32BAD6D419EF96C9008EBC74 /* MARStopsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MARStopsViewController.m; sourceTree = "<group>"; };
 		32C2FE3919EDAE1D00AE5081 /* MARMargueriteRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MARMargueriteRoute.h; sourceTree = "<group>"; };
 		32C2FE3A19EDAE1D00AE5081 /* MARMargueriteRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MARMargueriteRoute.m; sourceTree = "<group>"; };
 		32C2FE3C19EDAE6700AE5081 /* MARRoutesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MARRoutesViewController.h; sourceTree = "<group>"; };
@@ -144,8 +147,8 @@
 		321C6CD019EDA0F200B945BE /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				321C6CD119EDA16000B945BE /* MargueriteNetworkingService.h */,
-				321C6CD219EDA16000B945BE /* MargueriteNetworkingService.m */,
+				32BAD6D019EF8D26008EBC74 /* MARNetworkingService.h */,
+				32BAD6D119EF8D26008EBC74 /* MARNetworkingService.m */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -164,6 +167,8 @@
 			children = (
 				32C2FE3C19EDAE6700AE5081 /* MARRoutesViewController.h */,
 				32C2FE3D19EDAE6700AE5081 /* MARRoutesViewController.m */,
+				32BAD6D319EF96C9008EBC74 /* MARStopsViewController.h */,
+				32BAD6D419EF96C9008EBC74 /* MARStopsViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -315,8 +320,9 @@
 				321C6CB019ED9E3300B945BE /* AppDelegate.m in Sources */,
 				32C2FE3E19EDAE6700AE5081 /* MARRoutesViewController.m in Sources */,
 				32C2FE3B19EDAE1D00AE5081 /* MARMargueriteRoute.m in Sources */,
-				321C6CD319EDA16000B945BE /* MargueriteNetworkingService.m in Sources */,
+				32BAD6D219EF8D26008EBC74 /* MARNetworkingService.m in Sources */,
 				321C6CAD19ED9E3300B945BE /* main.m in Sources */,
+				32BAD6D519EF96C9008EBC74 /* MARStopsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,18 +6,16 @@
 //  Copyright (c) 2014 Stanford. All rights reserved.
 //
 
-#import "MargueriteRoute.h"
+#import "MARMargueriteRoute.h"
 
 @implementation MARMargueriteRoute
 
-- (instancetype) initWithName:(NSString *)ID shortName:(NSString *)shortName longNAme:(NSString *)longName;
+- (instancetype) initWithId:(NSInteger)routeID longNAme:(NSString *)longName;
 {
     self = [super init];
     if(self) {
-        self.routeId = ID;
-        self.routeShortName = shortName;
+        self.routeId = routeID;
         self.routeLongName = longName;
-        
     }
     return self;
 }

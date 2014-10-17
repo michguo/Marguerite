@@ -11,9 +11,8 @@
 @interface MARMargueriteRoute : NSObject
 
 @property (assign, nonatomic) NSInteger *routeId;
-@property (strong, nonatomic) NSString *routeShortName;
 @property (strong, nonatomic) NSString *routeLongName;
 
-- (instancetype) initWithName:(NSString *)ID shortName:(NSString *)shortName longName:(NSString *)longName;
+- (instancetype) initWithId:(NSInteger)routeID longName:(NSString *)longName;
 
 @end

@@ -1,8 +1,8 @@
 //
-//  MargueriteNetworkingService.h
+//  MARNetworkingService.h
 //  Marguerite
 //
-//  Created by Michelle Guo on 10/14/14.
+//  Created by Michelle Guo on 10/15/14.
 //  Copyright (c) 2014 Stanford. All rights reserved.
 //
 
@@ -11,10 +11,10 @@
 typedef void (^MargueriteSuccessBlock)(id responseObject);
 typedef void (^MargueriteFailureBlock)(NSError *error);
 
-@interface MargueriteNetworkingService : NSObject
+@interface MARNetworkingService : NSObject
 
 + (instancetype)sharedNetworkingService;
 
-- (void)getRoutessWithSuccess:(MargueriteSuccessBlock)success failure:(MargueriteFailureBlock)failure;
+- (void)getDataWithURL:(NSString *)type success:(MargueriteSuccessBlock)success failure:(MargueriteFailureBlock)failure;
 
 @end

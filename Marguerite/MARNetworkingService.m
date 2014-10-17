@@ -1,15 +1,15 @@
 //
-//  MargueriteNetworkingService.m
+//  MARNetworkingService.m
 //  Marguerite
 //
-//  Created by Michelle Guo on 10/14/14.
+//  Created by Michelle Guo on 10/15/14.
 //  Copyright (c) 2014 Stanford. All rights reserved.
 //
 
-#import "MargueriteNetworkingService.h"
+#import "MARNetworkingService.h"
 #import <AFNetworking/AFNetworking.h>
 
-@implementation MargueriteNetworkingService
+@implementation MARNetworkingService
 
 static NSString *kStopsURL = @"http://tsukihi.org/marguerite/stops.json";
 static NSString *kStopTimesURL = @"http://tsukihi.org/marguerite/stop_times.json";
@@ -27,10 +27,21 @@ static NSString *kRoutesURL = @"http://tsukihi.org/marguerite/routes.json";
     return sharedInstance;
 }
 
-- (void)getRoutesWithSuccess:(MargueriteSuccessBlock)success failure:(MargueriteFailureBlock)failure;
+- (void)getDataWithURL:(NSString *)type success:(MargueriteSuccessBlock)success failure:(MargueriteFailureBlock)failure;
 {
+    NSString *URL;
+    if([type isEqualToString:@"routes"]) {
+        URL = kRoutesURL;
+    } else if([type isEqualToString:@"stops"]) {
+        URL = kStopsURL;
+    } else if([type isEqualToString:@"stopTimes"]) {
+        URL = kStopTimesURL;
+    } else {
+        URL = kTripsURL;
+    }
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:kRoutesURL
+    [manager GET:URL
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              if([responseObject isKindOfClass:[NSDictionary class]]) {
