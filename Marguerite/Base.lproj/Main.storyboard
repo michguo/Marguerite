@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HHv-ic-Gkz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HHv-ic-Gkz">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
@@ -26,7 +26,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="yM3-1Y-qxu" kind="show" id="VRe-KK-3fx"/>
+                                            <segue destination="yM3-1Y-qxu" kind="show" id="37F-Gm-KC3"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -40,7 +40,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Marguerite" id="UxF-zz-BZT"/>
                     <connections>
-                        <outlet property="tableView" destination="GPB-fa-nbF" id="mZY-RA-qQz"/>
+                        <outlet property="tableView" destination="GPB-fa-nbF" id="Vde-Gv-eYm"/>
+                        <outlet property="view" destination="kh9-bI-dsS" id="sXI-zy-h30"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

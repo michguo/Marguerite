@@ -34,50 +34,55 @@
         for (NSDictionary *stopDictionary in allStops) {
             [self.allStops setObject:stopDictionary[@"stop_name"] forKey:stopDictionary[@"stop_id"]];
         }
-    }failure:^(NSError *error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error!"
-                                                        message:[NSString stringWithFormat:@"Problem found: %@", error.localizedDescription]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles: nil];
-    }];
-
-    // get one trip of route, using the first trip for now
-    [sharedService getDataWithURL:@"trips" success:^(id responseObject) {
-        NSDictionary *trips = responseObject;
-        NSArray *allTrips = [trips objectForKey:@"results"]; // grab the value of the responseObject dictionary
         
-        for (NSDictionary *tripDictionary in allTrips) {
-            if ([trips[@"route_id"] integerValue] == self.routeID) {
-                self.tripID = [trips[@"trip_id"] integerValue];
-                break;
+        // get one trip of route, using the first trip for now
+        [sharedService getDataWithURL:@"trips" success:^(id responseObject) {
+            NSDictionary *trips = responseObject;
+            NSArray *allTrips = [trips objectForKey:@"results"]; // grab the value of the responseObject dictionary
+            
+            for (NSDictionary *tripDictionary in allTrips) {
+                if ([tripDictionary[@"route_id"] integerValue] == self.routeID) {
+                    self.tripID = [tripDictionary[@"trip_id"] integerValue];
+                    break;
+                }
             }
-        }
+            
+            self.stops = [[NSMutableArray alloc] init]; // list of stop names
+            
+            [sharedService getDataWithURL:@"stopTimes" success:^(id responseObject) {
+                
+                NSDictionary *stopTimes = responseObject;
+                NSArray *allStopTimes = [stopTimes objectForKey:@"results"];
+                for (NSDictionary *stopTimeDictionary in allStopTimes) {
+                    NSString *stopName = self.allStops[stopTimeDictionary[@"stop_id"]];
+                    [self.stops addObject:stopName];
+                }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+            }failure:^(NSError *error) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error!"
+                                                                message:[NSString stringWithFormat:@"Problem found: %@", error.localizedDescription]
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles: nil];
+                [alert show];
+            }];
+        }failure:^(NSError *error) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error!"
+                                                            message:[NSString stringWithFormat:@"Problem found: %@", error.localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles: nil];
+            [alert show];
+        }];
     }failure:^(NSError *error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error!"
                                                         message:[NSString stringWithFormat:@"Problem found: %@", error.localizedDescription]
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles: nil];
-    }];
-
-    self.stops = [[NSMutableArray alloc] init]; // list of stop names
-
-    [sharedService getDataWithURL:@"stopTimes" success:^(id responseObject) {
-        
-        NSDictionary *stopTimes = responseObject;
-        NSArray *allStopTimes = [stopTimes objectForKey:@"results"];
-        for (NSDictionary *stopTimeDictionary in allStopTimes) {
-            NSString *stopName = self.allStops[stopTimeDictionary[@"stop_id"]];
-            [self.stops addObject:stopName];
-        }
-        
-    }failure:^(NSError *error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error!"
-                                                        message:[NSString stringWithFormat:@"Problem found: %@", error.localizedDescription]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles: nil];
+        [alert show];
     }];
 
 }

@@ -10,7 +10,7 @@
 
 @interface MARMargueriteRoute : NSObject
 
-@property (assign, nonatomic) NSInteger *routeId;
+@property (assign, nonatomic) NSInteger routeId;
 @property (strong, nonatomic) NSString *routeLongName;
 
 - (instancetype) initWithId:(NSInteger)routeID longName:(NSString *)longName;

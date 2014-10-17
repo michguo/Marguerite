@@ -10,7 +10,7 @@
 
 @implementation MARMargueriteRoute
 
-- (instancetype) initWithId:(NSInteger)routeID longNAme:(NSString *)longName;
+- (instancetype) initWithId:(NSInteger)routeID longName:(NSString *)longName;
 {
     self = [super init];
     if(self) {

@@ -26,7 +26,7 @@
     MARNetworkingService *sharedService = [MARNetworkingService sharedNetworkingService];
     [sharedService getDataWithURL:@"routes" success:^(id responseObject) {
         NSDictionary *results = responseObject;
-        NSArray *routes = [results objectForKey:@"routes"];
+        NSArray *routes = [results objectForKey:@"results"];
         self.routes = [[NSMutableArray alloc] init];
         for (NSDictionary *routeDictionary in routes) {
             MARMargueriteRoute *route = [[MARMargueriteRoute alloc] initWithId:[routeDictionary[@"route_id"] integerValue] longName:routeDictionary[@"route_long_name"]]; // store values in MARMarguerite object
@@ -61,7 +61,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"memberCell";
+    static NSString *cellIdentifier = @"routeCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
@@ -82,23 +82,11 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    
-    MARStopsViewController *ViewController = segue.destinationViewController;
+    MARStopsViewController *viewController = segue.destinationViewController;
     MARMargueriteRoute *route = [self.routes objectAtIndex:[self.tableView
                                                      indexPathForSelectedRow].row];
-    [ViewController setRouteID:route.routeId];
+    [viewController setRouteID:route.routeId];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
